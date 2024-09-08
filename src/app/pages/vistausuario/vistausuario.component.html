@@ -1,0 +1,50 @@
+<main>
+  <section class="container my-5">
+    <div class="d-flex gap-5 justify-content-center padre">
+      <img
+        class="img-fluid rounded-circle imagen"
+        src="{{ usuario?.image }} "
+        alt=""
+      />
+
+      <div class="informacion">
+        <div class="mt-4">
+          <h2>
+            <strong>
+              {{ usuario?.first_name }}
+            </strong>
+          </h2>
+          <h2>
+            <strong>
+              {{ usuario?.last_name }}
+            </strong>
+          </h2>
+          <h4 class="textresponsive">Usuario: {{ usuario?.username }}</h4>
+          <h4 class="textresponsive">Email: {{ usuario?.email }}</h4>
+          <hr />
+
+          <div class="d-flex gap-2">
+            <button
+              class="btn btn-danger"
+              (click)="
+                delete(usuario?._id!, usuario?.first_name!, usuario?.last_name!)
+              "
+            >
+              Eliminar
+            </button>
+
+            <a
+              class="btn btn-danger"
+              [routerLink]="['/updateuser', usuario?._id]"
+            >
+              Actualizar</a
+            >
+            <a class="btn btn-danger" [routerLink]="['home']">
+              Volver a Usuarios</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

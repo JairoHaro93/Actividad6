@@ -1,0 +1,122 @@
+<div>
+  <h1>{{ tipo }} Usuario</h1>
+  <form
+    [formGroup]="usuarioForm"
+    class="card p-3 shadow"
+    (ngSubmit)="getDataForm()"
+    novalidate
+  >
+    <!-- VALIDADOR NOMBRE -->
+    <div class="my-2">
+      <label for="name" class="form-label">Nombre</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="first_name"
+        id="first_name"
+        placeholder="Introduce el nombre"
+      />
+      @if(checkControl('first_name','required')){
+      <p class="error">El campo es requerido</p>
+
+      } @if( checkControl('first_name','minlength')){
+      <p class="error">minimo 3 caracteres requerido</p>
+
+      }
+    </div>
+    <!-- VALIDADOR APELLIDO -->
+    <div class="my-2">
+      <label for="last_name" class="form-label">Apellido</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="last_name"
+        id="last_name"
+        placeholder="Introduce el apellido"
+      />
+      @if(checkControl('last_name','required')){
+      <p class="error">El campo es requerido</p>
+
+      } @if( checkControl('last_name','minlength')){
+      <p class="error">minimo 3 caracteres requerido</p>
+
+      }
+    </div>
+    <!-- VALIDADOR EMAIL -->
+    <div class="my-2">
+      <label for="email" class="form-label">Email</label>
+      <input
+        type="email"
+        class="form-control"
+        formControlName="email"
+        id="email"
+        placeholder="Introduce el email"
+      />
+      @if( checkControl('email', 'pattern')){
+      <p class="error">El email es invalido</p>
+      } @if( checkControl('email', 'required')){
+      <p class="error">El email es obligatorio</p>
+      }
+    </div>
+
+    <!-- VALIDADOR USERNAME -->
+    <div class="my-2">
+      <label for="username" class="form-label">Username</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="username"
+        id="username"
+        placeholder="Introduce el username"
+      />
+      @if( checkControl('username', 'pattern')){
+      <p class="error">El nombre de usuario es invalido</p>
+      } @if( checkControl('username', 'required')){
+      <p class="error">El nombre de usuario es obligatorio</p>
+      }
+    </div>
+
+    <!-- VALIDADOR PASSWORD -->
+    <div class="my-2">
+      <label for="password" class="form-label">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        formControlName="password"
+        id="password"
+        placeholder="Introduce el password"
+      />
+      @if( checkControl('password','minlength')){
+      <p class="error">Ingrese almenos 8 caracteres</p>
+      } @if( checkControl('password','required')){
+      <p class="error">El campo es requerido</p>
+      }
+    </div>
+
+    <!-- VALIDADOR IMAGE -->
+    <div class="my-2">
+      <label for="image" class="form-label">Image</label>
+      <input
+        type="url"
+        class="form-control"
+        formControlName="image"
+        id="image"
+        placeholder="Introduce el link de la imagen"
+      />
+      @if( checkControl('image', 'pattern')){
+      <p class="error">
+        El link de imagen es invalido,seleccione una url de una imagen
+      </p>
+      } @if( checkControl('image', 'required')){
+      <p class="error">El link de imagen es obligatorio</p>
+      }
+    </div>
+
+    <input
+      type="submit"
+      class="btn btn-danger"
+      value="{{ tipo }}"
+      [disabled]="!usuarioForm.valid"
+    />
+  </form>
+</div>
